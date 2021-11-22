@@ -1,9 +1,8 @@
 import Button from '@restart/ui/esm/Button'
 import React, {useState} from 'react'
-import { useSelector, useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { add } from '../../store/actions/actions';
 import { Card, Form } from 'react-bootstrap'
-import './RecordInput.css'
 
 
 export default function RecordInput() {
@@ -25,7 +24,7 @@ export default function RecordInput() {
 
   return (
     <Card>
-      <Form 
+      <Form
         className="form-group"
         onSubmit={onSubmit}>
         <label htmlFor="newRecord" className="form-label m-3"> Новая Запись...</label>
@@ -37,7 +36,7 @@ export default function RecordInput() {
           </textarea>
         </div>
         <div className="d-flex justify-content-between">
-          <Button type="submit" className="btn btn-info rounded m-3">Сохранить</Button>
+          <Button type="submit" className="btn btn-info rounded m-3">💾</Button>
           <div className="m-3 mt-3">{ today.toLocaleDateString("ru-RU", options)}</div>
          </div>
       </Form>

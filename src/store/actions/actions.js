@@ -5,6 +5,13 @@ const select = (id)=> {
   };
 };
 
+const trashSelect = (id)=> {
+  return {
+    type: 'TRASH_SELECT',
+    payload: id
+  };
+};
+
 const add = (entry)=> {
   return {
     type: 'ADD',
@@ -26,4 +33,4 @@ const restore = (id)=> {
   };
 };
 
-export {select, add, remove, restore}
+export {select, trashSelect, add, remove, restore}

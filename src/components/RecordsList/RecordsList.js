@@ -2,8 +2,8 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { useSelector, useDispatch} from 'react-redux';
 import { select,remove } from '../../store/actions/actions';
+import Empty from '../Empty/Empty';
 
-import './RecordsList.css';
 
 export default function RecordsList() {
   const records = useSelector((store) => store.records);
@@ -20,22 +20,28 @@ export default function RecordsList() {
     dispatch(remove(id))
   }
   return (
+    <>
+    {
+      records.length === 0
+    ?
+    <Empty/>
+    :
     <Card>
         <ul className="list-group">
       {records
-      .sort((a,b)=> 
+      .sort((a,b)=>
        a.date - b.date
       ).map((item)=> {
         const {date,id} = item;
         return(
-          <li 
+          <li
             key={id}
-            data-id={id} 
+            data-id={id}
             onClick={onSelect}
             className="list-group-item d-flex justify-content-between align-items-center">
             {date}
-          <button 
-            data-id={id} 
+          <button
+            data-id={id}
             onClick={onRemove}
             className="btn btn-info rounded " >
             ❌
@@ -47,5 +53,9 @@ export default function RecordsList() {
       }
     </ul>
     </Card>
+  }
+
+    </>
+
   )
 }
